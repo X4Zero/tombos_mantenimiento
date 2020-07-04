@@ -1,0 +1,54 @@
+CREATE TABLE `tombo`.`categoria_producto` ( 
+`idCategoria_producto` INT NOT NULL AUTO_INCREMENT , 
+`nombre` VARCHAR(45) NOT NULL , 
+PRIMARY KEY (`idCategoria_producto`)
+) ENGINE = InnoDB;
+
+ALTER TABLE producto 
+ADD COLUMN idCategoria_producto int
+
+ALTER TABLE producto 
+ADD FOREIGN KEY (idCategoria_producto) REFERENCES categoria_producto(idCategoria_producto);
+
+ALTER TABLE producto
+ADD COLUMN marca varchar(45),
+ADD COLUMN capacidad varchar(10);
+
+INSERT INTO categoria_producto (nombre) VALUES ('abarrotes'),
+('piqueos'),
+('bebidas'),
+('confiteria');
+
+--INSERT producto
+
+INSERT INTO producto (idProducto, nombre, descripcion, precio_unitario, stock, idCategoria_producto, marca, capacidad) VALUES
+(1,'Gaseosa INCA KOLA','Gaseosa INCA KOLA Botella 1L',4.30,20,3,'INCA KOLA','1L'),
+(2,'Agua sin Gas CIELO','Agua sin Gas CIELO Botella 2.5L',2.50,24,3,'CIELO','2.5L'),
+(3,'Papas PRINGLES Sabor Original','Papas PRINGLES Sabor Original Lata 124g',7.90,24,2,'PRINGLES','124g');
+
+
+{
+	"idProducto": 4,
+    "nombre": "Gaseosa COCA COLA,",
+    "descripcion": "Gaseosa COCA COLA Botella 1L",
+    "precio_unitario": 4.30,
+    "stock": 12,
+    "idCategoria_producto": 3,
+    "marca": "COCA COLA",
+    "capacidad": "1L"
+	
+}
+
+{
+	"idProducto": 5,
+    "nombre": "Vodka SMIRNOFF Red Botetla",
+    "descripcion": "Vodka SMIRNOFF Red Botetla 700ml",
+    "precio_unitario": 23.90,
+    "stock": 12,
+    "idCategoria_producto": 3,
+    "marca": "SMIRNOFF",
+    "capacidad": "700ml"
+	
+}
+
+SELECT * FROM producto p JOIN categoria_producto c USING(idCategoria_producto) WHERE idCategoria_producto = 3;
