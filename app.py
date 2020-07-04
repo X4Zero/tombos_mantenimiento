@@ -127,14 +127,5 @@ def update_product(id):
             return jsonify({"mensaje": "Algo salió mal"})
 
 
-
-# @app.route('/delete/<string:id>')
-# def delete_contact(id):
-#     cur = mysql.connection.cursor()
-#     cur.execute('DELETE FROM contacts WHERE id = {0}'.format(id))
-#     mysql.connection.commit()
-#     flash('Contact Removed Successfully')
-#     return redirect(url_for('index'))
-
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
